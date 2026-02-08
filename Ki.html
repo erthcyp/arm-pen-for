@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TO KI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- เอฟเฟกต์เต็มหน้าจอ -->
+  <div class="fx confetti" id="confetti" aria-hidden="true"></div>
+  <div class="fx flash" id="flash" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <h1 class="title" id="titleText">แคนไออาคยูซัมติง</h1>
+
+    <!-- ปุ่มชุดแรก -->
+    <div class="btn-row" id="firstRow">
+      <button class="btn yes" id="yesBtn" type="button">ได้</button>
+      <button class="btn no" id="noBtn" type="button">ไม่ได้</button>
+    </div>
+
+    <p class="msg" id="msg" aria-live="polite"></p>
+
+    <!-- ปุ่มชุดสอง: ได้ / ได้ (ซ่อนก่อนแน่นอน) -->
+    <div class="btn-row" id="finalRow" hidden>
+      <button class="btn yes" id="yes2Btn" type="button">Pen</button>
+      <button class="btn yes" id="yes3Btn" type="button">เป็น</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

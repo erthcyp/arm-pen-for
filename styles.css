@@ -1,0 +1,129 @@
+* { box-sizing: border-box; }
+
+/* กัน hidden ไม่ให้ CSS อื่นทับ */
+[hidden]{ display: none !important; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: #111;
+
+  font-family: system-ui, -apple-system, "Noto Sans Thai", "Segoe UI", Roboto,
+               "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.wrap{
+  width: min(900px, 92vw);
+  text-align: center;
+  padding: 28px 18px;
+  position: relative;
+  z-index: 2; /* ตัวเว็บอยู่เหนือเอฟเฟกต์ */
+}
+
+.title{
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: 0.3px;
+  margin: 0 0 20px;
+  font-weight: 900;
+
+  white-space: pre; /* ขึ้นบรรทัดใหม่เฉพาะ \n */
+}
+
+.btn-row{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.btn{
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  border-color: #cfcfcf;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.yes{
+  border-color: #cfeee4;
+  background: #cefaeb;
+}
+
+.no{
+  border-color: #f8a7ba;
+  background: #f7b6b6;
+}
+
+.msg{
+  min-height: 24px;
+  margin: 10px 0 12px;
+  color: #444;
+  font-size: 14px;
+}
+
+/* สั่นแบบกวน ๆ */
+@keyframes shake {
+  0%{ transform: translateX(0); }
+  20%{ transform: translateX(-6px); }
+  40%{ transform: translateX(6px); }
+  60%{ transform: translateX(-4px); }
+  80%{ transform: translateX(4px); }
+  100%{ transform: translateX(0); }
+}
+.shake { animation: shake .22s ease; }
+
+.forced{
+  outline: 2px solid rgba(0,0,0,.12);
+}
+
+/* ===== เอฟเฟกต์เต็มหน้าจอ ===== */
+.fx{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* flash ขาวทั้งจอ */
+.flash{
+  opacity: 0;
+  background: rgba(255,255,255,0);
+}
+
+.flash.show{
+  animation: flashPop .45s ease;
+}
+
+@keyframes flashPop{
+  0%{ opacity: 0; background: rgba(255,255,255,0); }
+  30%{ opacity: 1; background: rgba(255,255,255,0.85); }
+  100%{ opacity: 0; background: rgba(255,255,255,0); }
+}
+
+/* confetti ทั้งจอ */
+.confetti{ overflow: hidden; }
+
+.piece{
+  position:absolute;
+  opacity:.95;
+  transform: rotate(0deg);
+  animation: fall linear forwards;
+}
+
+@keyframes fall{
+  to{ transform: translateY(110vh) rotate(720deg); opacity: 0.95; }
+}
